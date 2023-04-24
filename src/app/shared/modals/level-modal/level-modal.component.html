@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ !!level ? 'Edit' : 'Create' }} Level</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
+</div>
+<form [formGroup]='levelForm' (submit)="onSave()">
+    <div class="modal-body">
+        <div class="row g-3">
+            <div class="form-group required" [ngClass]="{'has-error': errors.name?.length}">
+                <label for="name" class="form-label">Level name</label>
+                <input type="text" class="form-control" id="name" formControlName='name' required>
+                <span class="form-text" *ngFor="let error of errors.name; let i = index">{{error}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark">{{ !!level ? 'Edit' : 'Create' }}</button>
+    </div>
+</form>
